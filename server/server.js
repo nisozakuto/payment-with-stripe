@@ -13,4 +13,8 @@ const storeItems = new Map([
     [2, { priceInCents: 2000, name: "Learn CsS" }]
 ])
 
+app.post('/create-checkout-session', (req, res) => {
+    res.json({ url: "hi" })
+})
+
 app.listen(3000)
