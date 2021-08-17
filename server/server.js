@@ -1,4 +1,4 @@
-require('dotenv').config
+require('dotenv').config()
 
 const express = require('express')
 const app = express()
@@ -26,7 +26,7 @@ app.post('/create-checkout-session', async (req, res) => {
                         product_data: {
                             name: storeItem.name
                         },
-                        unit_amount: storeItems.priceInCents
+                        unit_amount: storeItem.priceInCents
                     },
                     quantity: item.quantity
                 }
@@ -35,11 +35,9 @@ app.post('/create-checkout-session', async (req, res) => {
             cancel_url: `${process.env.SERVER_URL}/cancel.html`,
         })
         res.json({ url: sesion.url })
-    }
-    catch (e) {
+    } catch (e) {
         res.status(500).json({ error: e.message })
     }
-    res.json({ url: "hi" })
 })
 
 app.listen(3000)
